@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/history
+    url: jdbc:postgresql://localhost:4008/history
     username: postgres
     password: password
   jpa:
@@ -13,6 +13,6 @@ spring:
       mode: always
   rabbitmq:
     host: localhost
-    port: 4007
+    port: 4006
     username: guest
     password: guest

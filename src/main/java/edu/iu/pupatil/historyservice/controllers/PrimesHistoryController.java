@@ -1,7 +1,7 @@
 package edu.iu.pupatil.historyservice.controllers;
 
 import edu.iu.pupatil.historyservice.model.PrimesRecord;
-import edu.iu.pupatil.historyservice.repository.IPrimesHistoryRepository;
+import edu.iu.pupatil.historyservice.repository.PrimesHistoryRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,15 +10,15 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/primes")
 public class PrimesHistoryController {
-    private final IPrimesHistoryRepository IPrimesHistoryRepository;
+    private final PrimesHistoryRepository primesHistoryRepository;
 
     public PrimesHistoryController(
-            IPrimesHistoryRepository IPrimesHistoryRepository) {
-        this.IPrimesHistoryRepository = IPrimesHistoryRepository;
+            PrimesHistoryRepository primesHistoryRepository) {
+        this.primesHistoryRepository = primesHistoryRepository;
     }
 
     @GetMapping("/{customer}")
     public List<PrimesRecord> findAll(@PathVariable String customer){
-        return IPrimesHistoryRepository.findAllByCustomer(customer);
+        return primesHistoryRepository.findAllByCustomer(customer);
     }
 }

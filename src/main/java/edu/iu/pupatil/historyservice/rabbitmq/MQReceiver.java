@@ -2,17 +2,17 @@ package edu.iu.pupatil.historyservice.rabbitmq;
 
 import com.google.gson.Gson;
 import edu.iu.pupatil.historyservice.model.PrimesRecord;
-import edu.iu.pupatil.historyservice.repository.IPrimesHistoryRepository;
+import edu.iu.pupatil.historyservice.repository.PrimesHistoryRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MQReceiver {
-    private final IPrimesHistoryRepository PrimesHistoryRepository;
+    private final PrimesHistoryRepository primesHistoryRepository;
 
-    public MQReceiver(IPrimesHistoryRepository PrimesHistoryRepository){
-        this.PrimesHistoryRepository = PrimesHistoryRepository;
+    public MQReceiver(PrimesHistoryRepository primesHistoryRepository){
+        this.primesHistoryRepository = primesHistoryRepository;
     }
 
     @RabbitListener(queues = {"primes"})
@@ -21,6 +21,6 @@ public class MQReceiver {
         Gson gson = new Gson();
         PrimesRecord primesRecord = gson
                 .fromJson(message, PrimesRecord.class);
-        PrimesHistoryRepository.save(primesRecord);
+        primesHistoryRepository.save(primesRecord);
     }
 }

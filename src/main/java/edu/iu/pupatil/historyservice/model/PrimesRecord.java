@@ -17,4 +17,10 @@ public class PrimesRecord {
     private boolean isPrime;
 
     public int getId(){ return id;}
+
+    public void setCustomer(String customer){ this.customer=customer;}
+    public void setN(String n){ this.n=n;}
+    public void setIsPrime(boolean isPrime){ this.isPrime=isPrime;}
+
+
 }
